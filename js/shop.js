@@ -87,28 +87,22 @@ function buy(id) {
     if (product) {
       cart.push({ ...product, quantity: 1 });
     }
-   
   }
-  
-  
+
+  //console.log
 }
 
 // Exercise 2
-function cleanCart() {
-  
-}
+function cleanCart() {}
 
 // Exercise 3
 function calculateTotal() {
   // Calculate total price of the cart using the "cartList" array
-  
-  
 }
 
 // Exercise 4
 function applyPromotionsCart() {
   // Apply promotions to each item in the array "cart"
-  
 }
 
 // Exercise 5

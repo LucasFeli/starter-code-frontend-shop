@@ -103,7 +103,7 @@ function calculateTotal() {
   let cartList = 0;
   
   for (let i = 0; i < cart.length; i++) {
-    cartList += cart[i].price
+    cartList += cart[i].price * cart[i].quantity
     
   }
 }

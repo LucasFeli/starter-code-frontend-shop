@@ -90,8 +90,9 @@ function buy(id) {
   }
   calculateTotal();
   applyPromotionsCart();
-  console.log(carReady);
-  //console.log
+  printCart()
+  console.log("product?",carReady);
+    console.log("total",total)
 }
 
 // Exercise 2
@@ -102,12 +103,13 @@ function cleanCart() {
 // Exercise 3
 function calculateTotal() {
   // Calculate total price of the cart using the "cartList" array
-  let cartList = 0;
+ 
 
   for (let i = 0; i < cart.length; i++) {
-    cartList += cart[i].price * cart[i].quantity;
-  }
-  console.log("totales", cartList);
+    total += cart[i].price * cart[i].quantity;
+    
+}
+  console.log("totales", total);
 }
 
 // Exercise 4
@@ -127,6 +129,32 @@ function applyPromotionsCart() {
 // Exercise 5
 function printCart() {
   // Fill the shopping cart modal manipulating the shopping cart dom
+  const cardModal = document.querySelector("#cart_list");
+
+  cardModal.innerHTML = " ";
+
+  let cartHtml = " ";
+  for (let i = 0; i < cart.length; i++) {
+    const product = cart[i];
+
+    cartHtml += `
+        <tr>
+        <th >${product.name}</th>
+        <td >$${product.price.toFixed(2)}</td>
+        <td >${product.quantity}</td>
+        <td >$${product.subtotalWithDiscount}</td>
+    </tr>
+     `;
+    }
+
+   
+    cardModal.innerHTML = cartHtml;
+    
+    const totalPrice = document.querySelector("#total_price");
+    totalPrice.innerHTML = 0
+    totalPrice.textContent=total.toFixed(2);
+
+  
 }
 
 // ** Nivell II **

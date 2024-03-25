@@ -88,29 +88,40 @@ function buy(id) {
       cart.push({ ...product, quantity: 1 });
     }
   }
-
+  calculateTotal();
+  applyPromotionsCart();
+  console.log(carReady);
   //console.log
 }
 
 // Exercise 2
 function cleanCart() {
-    cart = [];
+  cart = [];
 }
 
 // Exercise 3
 function calculateTotal() {
   // Calculate total price of the cart using the "cartList" array
   let cartList = 0;
-  
+
   for (let i = 0; i < cart.length; i++) {
-    cartList += cart[i].price * cart[i].quantity
-    
+    cartList += cart[i].price * cart[i].quantity;
   }
+  console.log("totales", cartList);
 }
 
 // Exercise 4
 function applyPromotionsCart() {
   // Apply promotions to each item in the array "cart"
+  cart.forEach((promo) => {
+    if (promo.offer && promo.quantity >= promo.offer.number) {
+      promo.subtotalWithDiscount = Number(
+        promo.price * promo.quantity * (1 - promo.offer.percent / 100)
+      ).toFixed(2);
+    } else {
+      promo.subtotalWithDiscount = promo.price * promo.quantity;
+    }
+  });
 }
 
 // Exercise 5
